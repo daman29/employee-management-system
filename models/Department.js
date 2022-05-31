@@ -11,10 +11,17 @@ class Department {
         VALUES ('${this.name}');
         `;
 
-    const [department, _] = db.execute(sql);
+    const department = db.execute(sql);
 
-    return console.table(department);
+    return department;
   }
 
-  static getAll() {}
+  static getAll() {
+      let sql = "SELECT * FROM department"
+      const response = db.execute(sql);
+
+      return response;
+  }
 }
+
+module.exports = Department;
