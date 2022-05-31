@@ -1,7 +1,6 @@
 require("dotenv").config();
 const inquirer = require("inquirer");
 const cTable = require("console.table");
-const mysql = require("mysql2/promise");
 const DbQuery = require("./lib/DbQuery");
 
 // DbQuery.viewAllDepartments();
@@ -9,3 +8,5 @@ const DbQuery = require("./lib/DbQuery");
 // DbQuery.viewAllRoles();
 
 // DbQuery.addDepartment("Cleaners")
+// DbQuery.addRole("Graduate Engineer", 40000, 2);
+// DbQuery.addEmployee("jatt", "moosewala", 2, 1);

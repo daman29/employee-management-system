@@ -15,7 +15,7 @@ class Role {
 
     const role = db.execute(sql);
 
-    return console.table(role);
+    return role;
   }
 
   static getAll() {

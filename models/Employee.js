@@ -16,7 +16,7 @@ class Employee {
   
       const employee = db.execute(sql);
   
-      return console.table(employee);
+      return employee;
     }
   
     static getAll() {
