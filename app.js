@@ -20,7 +20,7 @@ async function main() {
       response.department = await DbQuery.getDepByName(response.department);
       DbQuery.addRole(response.name, response.salary, response.department);
       break;
-    case "viewDepartments":
+    case "view departments":
       break;
     case "exit":
       process.exit(0);
