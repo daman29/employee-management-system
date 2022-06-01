@@ -15,17 +15,17 @@ async function main() {
   const response = await Inquirer.init();
 
   switch (response.choice) {
-    case "addRole":
+    case "add role":
       const response = await Inquirer.addRole();
-      await DbQuery.addRole(
-        response.name,
-        response.salary,
-        response.departmentId
-      );
+      response.department = await DbQuery.getDepByName(response.department);
+      DbQuery.addRole(response.name, response.salary, response.department);
       break;
     case "viewDepartments":
       break;
+    case "exit":
+      process.exit(0);
   }
+  return main();
 }
 
 main();

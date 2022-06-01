@@ -16,11 +16,27 @@ class Department {
     return department;
   }
 
-  static getAll() {
-      let sql = "SELECT * FROM department"
-      const response = db.execute(sql);
+  static getDepId(name) {
+    let sql = `SELECT id FROM department WHERE name = '${name}';`;
 
-      return response;
+    const response = db.execute(sql);
+
+    return response;
+  }
+
+  static getDepName(id) {
+    let sql = `SELECT name FROM department WHERE id = '${id}';`;
+    
+    const response = db.execute(sql);
+
+    return response;
+  }
+
+  static getAll() {
+    let sql = "SELECT * FROM department;";
+    const response = db.execute(sql);
+
+    return response;
   }
 }
 
