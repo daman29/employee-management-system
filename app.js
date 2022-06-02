@@ -191,6 +191,11 @@ async function main() {
       break;
 
     case "delete department":
+      const deleteDepartment = await Inquirer.deleteDepartment();
+      const deleteDepartmentID = await DbQuery.getDepByName(deleteDepartment.department)
+
+      await DbQuery.deleteDepartment(deleteDepartmentID);
+      log.greenBright(`${deleteDepartment.department} department deleted`);
       break;
 
     case "exit":
