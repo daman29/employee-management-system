@@ -38,6 +38,12 @@ class Role {
     const response = db.execute(sql);
     return response;
   }
+
+  static delete(id){
+    let sql = `DELETE FROM role WHERE id = ${id}`
+    const response = db.execute(sql);
+    return response;
+  }
 }
 
 module.exports = Role;

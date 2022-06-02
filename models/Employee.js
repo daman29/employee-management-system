@@ -101,6 +101,12 @@ class Employee {
     const response = db.execute(sql);
     return response;
   }
+
+  static delete(id){
+    let sql = `DELETE FROM employee WHERE id = ${id}`
+    const response = db.execute(sql);
+    return response;
+  }
 }
 
 module.exports = Employee;

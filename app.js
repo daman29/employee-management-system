@@ -172,6 +172,27 @@ async function main() {
       console.table(departmentEmployees);
       break;
 
+    case "delete employee":
+      const deleteEmployee = await Inquirer.deleteEmployee();
+      const [delFirstName, delLastName] = deleteEmployee.employee.split(" ");
+      const deleteEmpId = await DbQuery.getEmpByName(delFirstName, delLastName);
+
+      await DbQuery.deleteEmployee(deleteEmpId);
+
+      log.greenBright(`${deleteEmployee.employee} employee deleted`);
+
+      break;
+
+    case "delete role":
+      const deleteRole = await Inquirer.deleteRole();
+      const deleteRoleID = await DbQuery.getRoleByName(deleteRole.role);
+      await DbQuery.deleteRole(deleteRoleID);
+      log.greenBright(`${deleteRole.role} role deleted`);
+      break;
+
+    case "delete department":
+      break;
+
     case "exit":
       process.exit(0);
   }

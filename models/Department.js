@@ -45,6 +45,12 @@ class Department {
     const response = db.execute(sql);
     return response;
   }
+
+  static delete(id){
+    let sql = `DELETE FROM department WHERE id = ${id}`
+    const response = db.execute(sql);
+    return response;
+  }
 }
 
 module.exports = Department;
