@@ -21,6 +21,9 @@
     - Delete departments, roles, and employees (bonus)
     - View the total utilized budget of a department (bonus)
 
+Below is the application schema:
+![Schema for the employees_db database with 3 tables, department, role and employee.](./assets/images/schema.png)
+
 ## Table of Contents
 1. [Installation](#installation)
 2. [Usage](#usage)

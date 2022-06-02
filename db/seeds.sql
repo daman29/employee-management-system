@@ -1,3 +1,4 @@
+-- generate seed data for department, role and employee tables
 INSERT INTO department (name)
 VALUES ('Engineering'),
     ('Admin'),

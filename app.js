@@ -1,27 +1,37 @@
-require("dotenv").config();
-const cTable = require("console.table");
-const DbQuery = require("./lib/DbQuery");
-const Inquirer = require("./lib/InquirerCalls");
-const { color, log } = require("console-log-colors");
+require("dotenv").config(); // dotenv config file
+const cTable = require("console.table"); // console.table module to print tables to the console
+const DbQuery = require("./lib/DbQuery"); // DbQuery module to query the database
+const Inquirer = require("./lib/InquirerCalls"); // Inquirer module to run inquirer prompts
+const { color, log } = require("console-log-colors"); // color logger for console logging
 
+// async main function to await all commands
 async function main() {
+  // initializing inquirer prompt
   const response = await Inquirer.init();
 
+  // read the response from the user to decide the next prompt
   switch (response.choice) {
+    // view all departments prompt
     case "view all departments":
+      // receive department table from database
       const departments = await DbQuery.viewAllDepartments();
-      console.table(departments);
+      console.table(departments); // log the table
       console.log('')
       break;
 
+      // view all roles
     case "view all roles":
+      // receive role table from database
       const roles = await DbQuery.viewAllRoles();
-      console.table(roles);
+      console.table(roles); // log the table
+      console.log('')
       break;
 
+      // view all employees
     case "view all employees":
+      // receive employee table from database
       const employees = await DbQuery.viewAllEmployees();
-      console.table(employees);
+      console.table(employees); // log the table
       console.log('')
       break;
 
@@ -214,6 +224,7 @@ async function main() {
       console.log("");
       break;
 
+      // if exit case then kill app
     case "exit":
       process.exit(0);
   }
