@@ -35,7 +35,7 @@ Below is the application schema:
 ## Installation
 - To install the application please follow the instructions below.
 ```bash
-- git clone git@github.com:daman29/employee-tracker.git
+- git clone git@github.com:daman29/employee-management-system.git
 - npm i
 ```
 - Then in MySQL source the schema file and the seeds.
@@ -49,7 +49,7 @@ Below is the application schema:
 ```bash
 - npm start
 ```
-- Visit the application repository at [GitHub Repository](https://github.com/daman29/employee-tracker)
+- Visit the application repository at [GitHub Repository](https://github.com/daman29/employee-management-system)
 
 - [Click on this link](https://youtu.be/EK8SbDy6TwU) to view the video demo of the application.
 
