@@ -43,7 +43,7 @@ class Employee {
   }
 
   static getFromManagerId(id) {
-    let sql
+    let sql;
     if (id === "null") {
       sql = `SELECT employee.id AS employee_id, employee.first_name, employee.last_name, role.title AS job_title, department.name as department_name, role.salary, CONCAT(m.first_name, ' ' , m.last_name) AS manager_name
     FROM employee
@@ -51,7 +51,7 @@ class Employee {
     JOIN department on role.department_id = department.id
     LEFT JOIN employee m on m.id = employee.manager_id
     WHERE employee.manager_id IS NULL;`;
-    }else{
+    } else {
       sql = `SELECT employee.id AS employee_id, employee.first_name, employee.last_name, role.title AS job_title, department.name as department_name, role.salary, CONCAT(m.first_name, ' ' , m.last_name) AS manager_name
     FROM employee
     JOIN role on employee.role_id = role.id
@@ -59,7 +59,19 @@ class Employee {
     LEFT JOIN employee m on m.id = employee.manager_id
     WHERE employee.manager_id = ${id};`;
     }
-    
+
+    const response = db.execute(sql);
+    return response;
+  }
+
+  static getFromDepartment(name) {
+    let sql = `SELECT employee.id AS employee_id, employee.first_name, employee.last_name, role.title AS job_title, department.name as department_name, role.salary, CONCAT(m.first_name, ' ' , m.last_name) AS manager_name
+    FROM employee
+    JOIN role on employee.role_id = role.id
+    JOIN department on role.department_id = department.id
+    LEFT JOIN employee m on m.id = employee.manager_id
+    WHERE department.name = "${name}";`;
+
     const response = db.execute(sql);
     return response;
   }

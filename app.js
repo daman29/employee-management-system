@@ -164,6 +164,14 @@ async function main() {
 
       break;
 
+    case "view employees by department":
+      const departmentResponse = await Inquirer.viewByDepartment();
+      const departmentEmployees = await DbQuery.getEmpByDepartment(
+        departmentResponse.department
+      );
+      console.table(departmentEmployees);
+      break;
+
     case "exit":
       process.exit(0);
   }
