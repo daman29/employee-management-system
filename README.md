@@ -59,7 +59,7 @@ The GIF below shows the application's appearance and functionality.
 
 
 ## License
-- This application is licensed under the MIT License
+- This application is licensed under the [MIT License](./LICENSE)
 
 ## Contributing
 - Clone repository first using git clone
