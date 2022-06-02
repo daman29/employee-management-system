@@ -4,19 +4,6 @@ const DbQuery = require("./lib/DbQuery");
 const Inquirer = require("./lib/InquirerCalls");
 const { color, log } = require("console-log-colors");
 
-// DbQuery.viewAllDepartments();
-// DbQuery.viewAllEmployees();
-// DbQuery.viewAllRoles();
-// async function main() {
-//   const response = await DbQuery.getEmployees();
-//   console.log(response);
-// }
-// main();
-
-// DbQuery.addDepartment("Cleaners")
-// DbQuery.addRole("Graduate Engineer", 40000, 2);
-// DbQuery.addEmployee("jatt", "moosewala", 2, 1);
-
 async function main() {
   const response = await Inquirer.init();
 
@@ -24,6 +11,7 @@ async function main() {
     case "view all departments":
       const departments = await DbQuery.viewAllDepartments();
       console.table(departments);
+      console.log('')
       break;
 
     case "view all roles":
@@ -34,12 +22,14 @@ async function main() {
     case "view all employees":
       const employees = await DbQuery.viewAllEmployees();
       console.table(employees);
+      console.log('')
       break;
 
     case "add a department":
       const responseDep = await Inquirer.addDepartment();
       await DbQuery.addDepartment(responseDep.departmentName);
       log.greenBright(`${responseDep.departmentName} Department added`);
+      console.log('')
       break;
 
     case "add a role":
@@ -53,6 +43,7 @@ async function main() {
         responseRole.department
       );
       log.greenBright(`${responseRole.name} Role added`);
+      console.log('')
       break;
 
     case "add an employee":
@@ -88,6 +79,7 @@ async function main() {
           responseEmployee.lastName +
           " has been added"
       );
+      console.log('')
 
       break;
 
@@ -112,7 +104,7 @@ async function main() {
       );
 
       log.greenBright(`Role has been updated`);
-
+      console.log('')
       break;
 
     case "update an employee manager":
@@ -141,6 +133,7 @@ async function main() {
       );
 
       log.greenBright("Employee manager updated");
+      console.log("");
 
       break;
 
@@ -161,6 +154,7 @@ async function main() {
       );
 
       console.table(managerResponse);
+      console.log("");
 
       break;
 
@@ -170,6 +164,24 @@ async function main() {
         departmentResponse.department
       );
       console.table(departmentEmployees);
+      console.log("");
+      break;
+
+    case "view budget":
+      const budgetResponse = await Inquirer.viewBudget();
+      const employeesInBudget = await DbQuery.getEmpByDepartment(
+        budgetResponse.department
+      );
+      const budgetArray = await employeesInBudget.map(
+        (employee) => employee.salary
+      );
+
+      log.greenBright(
+        `The utilized budget for ${
+          budgetResponse.department
+        } is $${budgetArray.reduce((a, b) => parseInt(a) + parseInt(b), 0)}`
+      );
+      console.log("");
       break;
 
     case "delete employee":
@@ -180,7 +192,7 @@ async function main() {
       await DbQuery.deleteEmployee(deleteEmpId);
 
       log.greenBright(`${deleteEmployee.employee} employee deleted`);
-
+      console.log("");
       break;
 
     case "delete role":
@@ -188,14 +200,18 @@ async function main() {
       const deleteRoleID = await DbQuery.getRoleByName(deleteRole.role);
       await DbQuery.deleteRole(deleteRoleID);
       log.greenBright(`${deleteRole.role} role deleted`);
+      console.log("");
       break;
 
     case "delete department":
       const deleteDepartment = await Inquirer.deleteDepartment();
-      const deleteDepartmentID = await DbQuery.getDepByName(deleteDepartment.department)
+      const deleteDepartmentID = await DbQuery.getDepByName(
+        deleteDepartment.department
+      );
 
       await DbQuery.deleteDepartment(deleteDepartmentID);
       log.greenBright(`${deleteDepartment.department} department deleted`);
+      console.log("");
       break;
 
     case "exit":
