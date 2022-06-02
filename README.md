@@ -51,10 +51,6 @@ Below is the application schema:
 ```
 - Visit the application repository at [GitHub Repository](https://github.com/daman29/employee-tracker)
 
-
-```bash
-node server.js
-```
 - [Click on this link](https://youtu.be/EK8SbDy6TwU) to view the video demo of the application.
 
 The GIF below shows the application's appearance and functionality.
