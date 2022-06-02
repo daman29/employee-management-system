@@ -18,10 +18,24 @@ class Role {
     return role;
   }
 
+  static getRoleId(name) {
+    let sql = `SELECT id FROM role WHERE title = "${name}";`;
+    const roleId = db.execute(sql);
+    return roleId;
+  }
+
   static getAll() {
-    let sql = "SELECT * FROM role";
+    let sql = `SELECT  role.id AS role_id, role.title AS job_title, department.name as department_name, role.salary 
+    FROM role
+    JOIN department on role.department_id = department.id;`;
     const response = db.execute(sql);
 
+    return response;
+  }
+
+  static getAllRolesRaw() {
+    let sql = "SELECT * FROM role;";
+    const response = db.execute(sql);
     return response;
   }
 }
